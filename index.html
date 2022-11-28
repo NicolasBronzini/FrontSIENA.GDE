@@ -1,0 +1,597 @@
+<!DOCTYPE HTML
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/FirmaAlta.css">
+    <link rel="stylesheet" href="./css/PaseAlta.css">
+    <link rel="stylesheet" href="./css/CaratulacionAlta.css">
+    <link rel="stylesheet" href="./css/vinculacion.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+</head>
+
+<body>
+    <header>
+        <div>
+            <div class="navbar-header"> <a class="navbar-brand"
+                    href="https://www.argentina.gob.ar/bienesdelestado/tramitesaabe" id="navbar-brand"
+                    aria-label="Argentina.gob.ar Presidencia de la Nación">
+                    <img src="/image/logo_argentina-blanco.svg" alt="Argentina.gob.ar" height="50" width="254"> </a> <a
+                    class="btn btn-mi-argentina btn-login visible-xs" href="https://mi.argentina.gob.ar"
+                    aria-label="Ingresar a Mi Argentina"></a> <a
+                    onclick="jQuery('.navbar.navbar-top').addClass('state-search');"
+                    class="btn btn-mi-argentina btn-login visible-xs" href="#" aria-labelledby="edit-keys"></a></div>
+        </div>
+    </header>
+    <!-- ProcesosMasivos_Buscar -->
+    <div class="container_procesosFirmaMasiva">
+        <div class="ltProceso">
+            <div class="apartado-btn_ProcesosMasivos">
+                <!-- procesos masivos button despegable -->
+                <button class="btn_ProcesosMasivos"><a href="/index.html" id="linkHome">Procesos masivos ></a> </button>
+            </div>
+        </div>
+        <div>
+            <!-- filtros -->
+            <div class="container_Filtros">
+                <div class="filtros_Proceso"> 
+                    <div class="div_InputsFiltro">
+                        <input type="nu" placeholder="Número de Lote " id="Input_filtro-1" ></input>
+                        <input type="text" placeholder="Referencia" id="Input_filtro-2"></input>
+                    </div>
+                    <div class="btn_Filtros">
+                        <button id="btn_filtrado" class="btn btn-secondary">Filtrar</button>
+                        <button id="btn_Alta" class="btn btn-success">Alta</button>
+                    </div>
+                </div>
+                <hr style="width: 95%; margin:auto;">
+                <!-- seteo de filtros -->
+                <div class="container_SeteoFiltros">
+                    <div class="Filtro_masivo">
+                        <!-- Tipo de proceso -->
+                        <div class="btn-group" role="group" style="margin:0px 20px ;">
+                            <label for="">Tipo Proceso: ></label>
+                            <select name="cbxProceso" id="cbxProceso" >
+                                <option selected>Seleccionar...</option>
+                                <option >Caratulacion EE</option>
+                                <option  >Firma</option>
+                                <option >Pase EE</option>
+                                <option  >Vinculación EE</option>
+                               
+                            </select>
+                          </div>
+                          <!-- Estado del proceso -->
+                          <div class="btn-group" role="group" style="margin:0px 20px ;">
+                            <label for="">Estado: ></label>
+                            <select name="Seleccionar">
+                                <option selected>Seleccionar...</option>
+                                <option>Pendiente</option>
+                                <option>Finalizado</option>
+                                <option>Interrumpido</option>
+                                <option>Procesar</option>
+                            </select>
+                            
+                          </div>
+                          <!-- inputs Aplicar Filtros -->
+                       <input type="text" placeholder="Firmante" required maxlength="100"></input>
+                       <input type="date" placeholder="Fecha Inicial" required></input>
+                       <input type="date" placeholder="Fecha Final" required></input>
+                    </div>
+                    <div    class="container_btn_Filtro" >
+                        <button id="btn_filtroCancelar" class="btn btn-light">X cancelar</button>
+                        <button id="btn_filtroAplicar" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
+                            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                          </svg></i>Aplicar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- outputData -->
+            <div class="OutDataContainer">
+                <div class="container_dataFiltro">
+                    <div class="_dataFiltro">filtros activos {numero}elementos</div>
+                    <div class="btn_dataFiltro"><button>Primero</button><button>Anterior</button><p>Registros {numero}</p><p>Pàgina{numero} de {numero}</p><button>Siguiente</button><button>Último</button></div>
+                </div>
+                <!-- tabla de datos -->
+                <table class="tftable" border="1">
+                    <tr><th>Numero</th><th>Referencia del Lote</th><th>Tipo de Proceso</th><th>Estado de Lote</th><th>Usuario</th> <th>Firmante</th> <th>Accion</th></tr>
+                    <tr class="tr_impar"><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td class="btn_accion"><button class="btn_ver">ver</button><button class="btn_editar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg></button><button class="btn_Firma"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>  <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path> <path d="M16 7h4"></path> <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path></svg></button></td></tr>
+                    <tr><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td class="btn_accion"><button class="btn_ver">ver</button><button class="btn_editar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg></button><button class="btn_Firma"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path> <path d="M16 7h4"></path> <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path></svg></button></td></tr>
+                    <tr class="tr_impar"><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td class="btn_accion"><button class="btn_ver">ver</button><button class="btn_editar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg></button><button class="btn_Firma"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path><path d="M16 7h4"></path> <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path></svg></button></td></tr>
+                    <tr><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td class="btn_accion"><button class="btn_ver">ver</button><button class="btn_editar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg></button><button class="btn_Firma"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path><path d="M16 7h4"></path><path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path></svg></button></td></tr>
+                    <tr class="tr_impar"><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td class="btn_accion"><button class="btn_ver">ver</button><button class="btn_editar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg></button><button class="btn_Firma"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path><path d="M16 7h4"></path><path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path></svg></button></td></tr>
+                    <tr><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td><output></output></td><td class="btn_accion"><button class="btn_ver">ver</button><button class="btn_editar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.127 22.562l-7.127 1.438 1.438-7.128 5.689 5.69zm1.414-1.414l11.228-11.225-5.69-5.692-11.227 11.227 5.689 5.69zm9.768-21.148l-2.816 2.817 5.691 5.691 2.816-2.819-5.691-5.689z"/></svg></button><button class="btn_Firma"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-writing" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M20 17v-12c0 -1.121 -.879 -2 -2 -2s-2 .879 -2 2v12l2 2l2 -2z"></path> <path d="M16 7h4"></path> <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path></svg></button></td></tr>
+                </table>
+    
+            </div>
+        </div>
+        <!-- Apartado para crear Expediente -->
+       
+        
+        
+        
+        
+        
+        
+        <!-- -------------------------------------------------------------------------------- -->
+
+       <!-- Apartado alta de Firma de EE -->
+        <div class="Alta_Expedientes_Firma_Conteiner" id="Container_total_Firma">
+            <!-- encabezado y fecha -->
+            <div class="Encabezado_Alta_Expediente_Firma">
+                <span id="tituloModificarOption" style="font-size:1.4rem;" >ALTA PROCESO MASIVO DE FIRMA</span>
+                <p>fecha {Fecha dia efectuado}</p>
+            </div>
+            <!-- referencias de proceso -->
+            <div class="Referencia_Proceso_Firma_Expedientes">
+                <p>Nro. Lote</p>
+                <p>Estado <span> <strong>Pendiente</strong> </span> </p>
+                <p>Usuario <span> <strong> Apellido/s y Nombre/s</strong></span></p>
+                <p>Tipo Proceso <span> <strong> Firma</strong></span> </p>
+            </div>
+            <!-- inputs de seleccion de referencia para generar expediente -->
+            <div class="container_Inputs_Entrada_Data_Firmante">
+                        <!-- Input Referencia -->
+                <div class="div_Inputs_Entrada_Data_Firmante form-control">
+                   <p>Referencia</p>
+                    <input type="text" class="grupo_Entrada_Data_Firma" required style="max-width: 500px; height: 40px;" id="referencia_alta_proceso_masivo_firma"></input>
+                </div>
+                        <!-- Firmante -->
+                <div class="div_Inputs_Entrada_Data_Firmante form-control">
+                    <p> Firmante</p>
+                    <div class=" grupo_Entrada_Data_Firma " role="group">
+                            <!-- Chequear su existencia en GDE. Selección única -->
+                            <input type="text"  style="max-width: 500px; height: 40px;" id="firmante_alta_proceso_masivo_firma" ></input>
+                    </div>
+                </div>
+                            <!--Button Tipo de Documento  -->
+                <div class="div_Inputs_Entrada_Data_Firmante form-control">
+                    <p>Tipo de Documento</p>
+                    <div class="btn-group grupo_Entrada_Data_Firma" role="group">
+                        <select class="selectDataAlta" name="Seleccionar" id="tipoDeDocumento_alta_proceso_masivo_firma">
+                            <option>IDCIN</option>
+                            <option>IFGRA</option>
+                            <option>CROQU </option>
+                            <option>FPCCA</option>
+                            <option class="SeleccionarOption" selected>Seleccionar</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+            <!-- ubicacion Phath:     permite asociacion -->
+            <div class="container_Permite_Asociacion_Firma container_Permite_Asociacion_Firma2  animate__animated animate__fadeIn">
+                <div class="div_Permite_Asociacion_Firma" id="UbicacionPath2">
+                    <button>+ Ubicacion</button id="path_alta_proceso_masivo_firma">  Path:
+                </div>
+
+                <!-- SWITCH -->
+                
+                <div class="div_Permite_Asociacion_Firma Inputs_btnAsocia_Unico_Item animate__animated animate__fadeIn form-control " id="InputActiveEntidad">
+                    <p>Entidad</p>
+                    <div class="btn-group grupo_Entrada_Data_Firma Select_Asociacion_Alta_Firma" role="group" >
+                        <select class="select_Data_Alta" id="SelectInmueble" name="Seleccionar"style="width:100%; height: 40px;" >
+                            <option value="">Seleccionar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="div_Permite_Asociacion_Firma2 btn_Unico_Item ">
+                    <p>¿Asocia a único item?</p>
+                    <button class="Swich_Item_Unico" id="SwichItemUnico"><span >No</span><span >Si</span></button>
+                </div>
+                <div class="div_Permite_Asociacion_Firma2">
+                    <p>¿Permite Asociación?</p>
+                    <button class="Swich_Asociacion" id="SwichAsociacion" ><span >No</span><span >Si</span></button>
+                </div>
+            </div>
+            <!-- Tipo de docuemento SIENA -->
+            <div class="div_Inputs_Entrada_Data_Firmante Inputs_btnAsocia_Unico_Item animate__animated animate__fadeIn form-control" id="div_InputTipoDocumentoSIENA">
+                 <p>Tipo de documento SIENA</p>
+                 <div  class="btn-group grupo_Entrada_Data_Firma">
+                     <select class="select_Data_Alta" id="TipoDocumentoSiena">
+                         <option >Seleccionar</option>
+                     </select>
+                 </div>
+            </div>
+            <div class="div_Permite_Asociacion_Firma" id="UbicacionPath">
+                <button>&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ubicacion</button>  Path:
+            </div>
+            <!-- cuadricula De Documento electronico -->
+            <div class="container_cuadricula_Datos_Firma  animate__animated animate__fadeIn" style="display: none;">
+                <p>Nombre del Documento</p>
+                <p>Descripciòn del Documento</p>
+                <p> Asocia SIENA</p>
+                <p>Entidad</p>
+                <p>Id.Entidad</p>
+            </div>
+             <div class="container" id="divTablaAltaProcesoMasivoDeFirma"></div>
+            <!-- Botones de accion con ese nuevo proceso -->
+            <div class="container_btn_Proceso_Firma" id="Alta_firma_container_btn">
+                <button class="Cancelar_Proceso_Firma btn btn-danger" id="btnCancelar">X Cancelar </button>
+                <button class="Procesar_Proceso_Firma btn btn-primary"id="btnProcesar"> Procesar </button>
+                <button class="Guardar_Proceso_Firma btn btn-success" id="btnGuardar">  Guardar </button>
+            </div>
+        </div>
+        
+       
+
+
+
+
+<!-- ---------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
+
+
+        <!-- Al anterior Div Cuando se empiece tema JS Se creara sus variables -->
+        <!-- Este va a ser el apartado de caratulacion -->
+        <div class="Alta_Expedientes_Caratulacion_Conteiner" id="Container_total_Caratulacion">
+            <!-- encabezado y fecha -->
+            <div class="Encabezado_Alta_Expediente_Caratulacion">
+                <span id="" style="font-size:1.4rem;">ALTA CARATULACIÓN MASIVA DE EXPEDIENTES ELECTRÓNICOS</span>
+                <p>fecha {Fecha dia efectuado}</p>
+            </div>
+            <!-- referencias de proceso -->
+            <div class="Referencia_Proceso_Caratulacion_Expedientes">
+                <p>Nro. Lote</p>
+                <p>Estado <span> <strong>Pendiente</strong> </span> </p>
+                <p>Usuario <span> <strong> Apellido/s y Nombre/s</strong></span></p>
+                <p>Tipo Proceso <span> <strong> Firma</strong></span> </p>
+            </div>
+            <!-- inputs de seleccion de referencia para generar expediente -->
+            <div class="container_Inputs_Entrada_Data_Firmante">
+                <!-- Input Referencia -->
+        <div class="div_Inputs_Entrada_Data_Caratulacion form-control">
+           <p>Referencia</p>
+            <input type="text" class="grupo_Entrada_Data_Caratulacion" required style="width: 100%; height: 40px;" id="referencia_alta_proceso_masivo_firma"></input>
+        </div>
+                <!-- Firmante -->
+        <div class="div_Inputs_Entrada_Data_Caratulacion form-control">
+            <p> Firmante</p>
+            <div class=" grupo_Entrada_Data_Caratulacion " role="group">
+                    <!-- Chequear su existencia en GDE. Selección única -->
+                    <input type="text"  style="width: 100%; height: 40px;" id="firmante_alta_proceso_masivo_firma" ></input>
+            </div>
+        </div>
+                    <!--Button Tipo de Documento  -->
+        <div class="div_Inputs_Entrada_Data_Caratulacion form-control" role="group">
+            <p>Tipo de Documento</p>
+            <div class=" grupo_Entrada_Data_Caratulacion" role="group">
+                <select class="selectDataAlta" name="Seleccionar" id="" style="width:100%; height: 40px;">
+                    <option>IDCIN</option>
+                    <option>IFGRA</option>
+                    <option>CROQU </option>
+                    <option>FPCCA</option>
+                    <option class="SeleccionarOption" selected>Seleccionar</option>
+                  </select>
+            </div>
+        </div>
+    </div>
+
+
+            <!-- SWITCHCaratulacion -->
+            <div class="container_Permite_Asociacion_Caratulacion container_Permite_Asociacion_Caratulacion2">
+                <div class="div_Permite_Asociacion_Caratulacion2 " >
+                    <p>¿Trata Única?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                <div class="div_Permite_Asociacion_Caratulacion2">
+                    <p>¿Asocia Expediente?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                <div class="div_Permite_Asociacion_Caratulacion2">
+                    <p>¿Requiere Asociación SIENA?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                
+            </div>
+
+            <!--div trata y motivo  -->
+
+            <div class="container_Permite_Asociacion_Caratulacion container_Permite_Asociacion_Caratulacion2">
+                
+                <div class="div_Inputs_Entrada_Data_Caratulacion Inputs_btnAsocia_Unico_Item animate__animated form-control" >
+                    <p>Trata</p>
+                    <div  class=" grupo_Entrada_Data_Caratulacion">
+                        <select class="select_Data_Alta" id="" style="width: 100%; height: 40px;">
+                            <option >Seleccionar</option>
+                        </select>
+                    </div>
+               </div>
+
+                <div class="div_Permite_Asociacion_Caratulacion2">
+                    <p>¿Motivo Interno y Descripción <br>
+                        Adicional del tramite coinciden ?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                
+            </div>
+
+            <!-- Apartado cruadricula Caratulacion -->
+            <div class="Datos_CaratulacionEE_Container">
+                <div class="container_HeaderCuadricula">
+                    <div class="_data_Filtro_Caratulacion">DATOS CARATULA EXPEDIENTE ELECTRÓNICO</div>
+                    <div class="btn_data_Filtro_Caratulacion"><button>Primero</button><button>Anterior</button><p>Registros {numero}</p><p>Pàgina{numero} de {numero}</p><button>Siguiente</button><button>Último</button></div>
+                </div>
+                
+                <div class="Container_Cuadricula_Motivo_Interno_Caratulacion">
+                    <div class="Header_Cuadricula_Motivo_Interno_Caratulacion">Motivo Interno/ Descripcion Adicional del Tramite</div>
+                    <div class="Output_Cuadricula_Motivo_Interno_Caratulacion">
+
+                    </div>
+                </div>
+            </div>
+            <!-- Botones de accion con ese nuevo proceso -->
+            <div class="container_btn_Proceso_Caratulacion" id="Alta_firma_container_btn">
+                <button class="Cancelar_Proceso_Caratulacion btn btn-danger" id="">X Cancelar </button>
+                <button class="Procesar_Proceso_Caratulacion btn btn-primary"id=""> Procesar </button>
+                <button class="Guardar_Proceso_Caratulacion btn btn-success" id="">  Guardar </button>
+            </div>
+        </div>
+        <br><br>
+
+
+
+
+
+
+
+        
+
+
+        <!-- ------------------------------------------------------------------------- -->
+        <!-- Este va a ser el apartado de pase -->
+
+        <div class="Alta_Expedientes_Pase_Conteiner" id="Container_total_Pase">
+            <!-- encabezado y fecha -->
+            <div class="Encabezado_Alta_Expediente_Pase">
+                <span id="" style="font-size:1.4rem;">ALTA PASE MASIVO DE EXPEDIENTES ELECTRÓNICOS</span>
+                <p>fecha {Fecha dia efectuado}</p>
+            </div>
+            <!-- referencias de proceso -->
+            <div class="Referencia_Proceso_Pase_Expedientes">
+                <p>Nro. Lote</p>
+                <p>Estado <span> <strong>Pendiente</strong> </span> </p>
+                <p>Usuario <span> <strong> Apellido/s y Nombre/s</strong></span></p>
+                <p>Tipo Proceso <span> <strong> Firma</strong></span> </p>
+            </div>
+            <!-- inputs de seleccion de referencia para generar expediente -->
+            <div class="container_Inputs_Entrada_Data_Pase">
+                        <!-- Input Referencia -->
+                <div class="div_Inputs_Entrada_Data_Pase Inputs_btnAsocia_Unico_Item animate__animated form-control">
+                   <p>Referencia</p>
+                    <input type="text" class="grupo_Entrada_Data_Pase" required style="width: 100%; height: 40px;"></input>
+                </div>
+                        <!-- Firmante -->
+                <div class="div_Inputs_Entrada_Data_Pase Inputs_btnAsocia_Unico_Item animate__animated form-control">
+                    <p> Firmante</p>
+                    <div class=" grupo_Entrada_Data_Pase" role="group">
+                        <select class="select_Data_Alta" name="Seleccionar" style="width: 100%; height: 40px;">
+                            <!-- Chequear su existencia en GDE. Selección única -->
+                            <option class="Seleccionar_Option" selected>Seleccionar</option>
+                            <option>nombre de firmante</option>
+                          </select>
+                    </div>
+                </div>
+               
+            </div>
+            <!-- SWITCH DE TESTEO Y ASOCIACION-->
+
+
+            <div class="container_Permite_Asociacion_Pase container_Permite_Asociacion_Pase2">
+                <div class="div_Permite_Asociacion_Pase2">
+                    <p>¿El destino de los EE es único?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                <div class="div_Permite_Asociacion_Pase2">
+                    <p>¿Asocia Expediente?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                <div class="div_Permite_Asociacion_Pase2">
+                    <p>¿Requiere Asociación SIENA?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                
+            </div>
+
+            <!-- Otros tipos de switch y select de GDE -->
+
+            <div class="container_Permite_Asociacion_Pase container_Permite_Asociacion_Pase2">
+                <div class="div_Inputs_Entrada_Data_Pase Inputs_btnAsocia_Unico_Item animate__animated form-control" >
+                    <p>Usuario, Reparticion o mesa de una reparticion en GDE</p>
+                    <div  class=" grupo_Entrada_Data_Pase">
+                        <select class="select_Data_Alta" id="" style="width: 100%; height: 40px;">
+                            <option >Seleccionar</option>
+                        </select>
+                    </div>
+               </div>
+                <div class="div_Permite_Asociacion_Pase2">
+                    <p>¿Asocia a un unico EE?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                <div class="div_Permite_Asociacion_Pase2">
+                    <p>¿Asocia a un unico Item?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                
+            </div>
+
+            <!-- Input y select de EE Pase -->
+            <div class="container_Inputs_Entrada_Data_Pase">
+                        <!-- Input Referencia -->
+                <div class="div_Inputs_Entrada_Data_Pase Inputs_btnAsocia_Unico_Item animate__animated form-control">
+                   <p>Expediente Electronico</p>
+                    <input type="text" class="grupo_Entrada_Data_Pase" required placeholder="Ex-Año-XXXXXXXX-APN-Reparticion"></input>
+                </div>
+                        <!-- Firmante -->
+                <div class="div_Inputs_Entrada_Data_Pase Inputs_btnAsocia_Unico_Item animate__animated form-control">
+                    <p> Firmante</p>
+                    <div class="grupo_Entrada_Data_Pase" role="group">
+                        <select class="select_Data_Alta" name="Seleccionar" style="width: 100%; height: 40px;">
+                            <!-- Chequear su existencia en GDE. Selección única -->
+                            <option class="Seleccionar_Option" selected>Seleccionar</option>
+                            <option>nombre de firmante</option>
+                        </select>
+                    </div>
+                </div>
+               
+            </div>
+
+              <!-- Apartado cruadricula Pase -->
+            <div class="DatosPaseEEContainer">
+                <div class="container_HeaderCuadricula">
+                    <div class="_dataFiltroPase"><span>+</span><span>Importar EE generado masivamente</span></div>
+                    <div class="btn_dataFiltroPase"><button>Primero</button><button>Anterior</button><p>Registros {numero}</p><p>Pàgina{numero} de {numero}</p><button>Siguiente</button><button>Último</button></div>
+                </div>
+                
+                <div class="ContainerCuadriculaMotivoInternoPase">
+                    <div class="HeaderCuadriculaMotivoInternoPase"><h4>Expediente Electrónico</h4> </div>
+                    <div class="OutputCuadriculaMotivoInternoPase">
+
+                    </div>
+                </div>
+            </div>
+           
+            <!-- Botones de accion con ese nuevo proceso -->
+            <div class="container_btn_Proceso_Pase" id="">
+                <button class="Cancelar_Proceso_Pase btn btn-danger" id="">X Cancelar </button>
+                <button class="Procesar_Proceso_Pase btn btn-primary"id=""> Procesar </button>
+                <button class="Guardar_Proceso_Pase btn btn-success" id="">  Guardar </button>
+            </div>
+        </div>
+        <br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- ---------------------------------------------------------------------- -->
+        <!-- Este apartado es el de Vincular -->
+        <div class="Alta_Expedientes_Vincular_Conteiner" id="Container_total_Vinculacion">
+            <!-- encabezado y fecha -->
+            <div class="Encabezado_Alta_Expediente_Vincular">
+                <span id="" style="font-size:1.4rem;">VINCULACIÓN MASIVA DE EXPEDIENTES ELECTRÓNICOS</span>
+                <p>fecha {Fecha dia efectuado}</p>
+            </div>
+            <!-- referencias de proceso -->
+            <div class="Referencia_Proceso_Vincular_Expedientes">
+                <p>Nro. Lote</p>
+                <p>Estado <span> <strong>Pendiente</strong> </span> </p>
+                <p>Usuario <span> <strong> Apellido/s y Nombre/s</strong></span></p>
+                <p>Tipo Proceso <span> <strong> Firma</strong></span> </p>
+            </div>
+            <!-- inputs de seleccion de referencia para generar expediente -->
+            <div class="container_Inputs_Entrada_Data_Vincular">
+                        <!-- Input Referencia -->
+                <div class="div_Inputs_Entrada_Data_Vincular Inputs_btnAsocia_Unico_Item  form-control">
+                   <p>Referencia</p>
+                    <input type="text" class="grupo_Entrada_Data_Vincular" required style="width: 100%; height: 40px;"></input>
+                </div>
+                        <!-- Firmante -->
+                <div class="div_Inputs_Entrada_Data_Vincular Inputs_btnAsocia_Unico_Item  form-control">
+                    <p> Firmante</p>
+                    <div class=" grupo_Entrada_Data_Vincular" role="group">
+                        <select class="select_Data_Alta" name="Seleccionar" style="width: 100%; height: 40px;">
+                            <!-- Chequear su existencia en GDE. Selección única -->
+                            <option class="Seleccionar_Option" selected>Seleccionar</option>
+                            <option>nombre de firmante</option>
+                          </select>
+                    </div>
+                </div>
+                            <!--Button Tipo de Documento  -->
+                <div class="div_Inputs_Entrada_Data_Vincular Inputs_btnAsocia_Unico_Item  form-control">
+                    <p>Tipo de Documento</p>
+                    <div class=" grupo_Entrada_Data_Vincular" role="group">
+                        <select class="select_Data_Alta" name="Seleccionar" style="width: 100%; height: 40px;">
+                            <option>IDCIN</option>
+                            <option>IFGRA</option>
+                            <option>CROQU </option>
+                            <option>FPCCA</option>
+                            <option class="Seleccionar_Option" selected>Seleccionar</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+            <!-- ubicacion Phath:     permite asociacion -->
+
+            <!-- SWITCH DE TESTEO Y ASOCIACION-->
+            <div class="container_Permite_Asociacion_Vincular container_Permite_Asociacion_Vincular2">
+                <div class="div_Permite_Asociacion_Vincular2">
+                    <p>¿Asocia a un único EE principal?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                <div class="div_Permite_Asociacion_Vincular2">
+                    <p>¿Requiere Asociación SIENA?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                <div class="div_Permite_Asociacion_Vincular2">
+                    <p>¿Asocia a un único Item?</p>
+                    <button class="Swich_Asociacion" id="" ><span >No</span><span >Si</span></button>
+                </div>
+                
+            </div>
+
+            <!-- Expediente electronico Firmante  -->
+            
+            <div class="container_Inputs_Entrada_Data_Vincular" id="ContainerVincularInputsEE">
+                        <!-- Input Referencia -->
+                <div class="div_Inputs_Entrada_Data_Vincular   form-control" id="ExpedienteElectronicoVincular">
+                   <p>Expediente Electronico</p>
+                    <input type="text" class="grupo_Entrada_Data_Vincular" required placeholder="Ex-Año-XXXXXXXX-APN-Reparticion" style="width: 100%; height: 40px;"></input>
+                </div>
+                        <!-- Firmante -->
+                <div class="div_Inputs_Entrada_Data_Vincular form-control" id="EntidadVincularEE">
+                    <p> Entidad</p>
+                    <div class=" grupo_Entrada_Data_Vincular" role="group">
+                        <select class="select_Data_Alta" name="Seleccionar" style="width: 100%; height: 40px;">
+                            <!-- Chequear su existencia en GDE. Selección única -->
+                            <option class="Seleccionar_Option" selected>Seleccionar</option>
+                            <option>nombre de firmante</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Apartado cruadricula Vinculacion -->
+            <div class="DatosVincularContainer">
+                <div class="_dataFiltroVincular"><span>+</span><span>Importar EE generado masivamente</span></div>
+                <div class="ContainerCuadriculaMotivoInternoVincular">
+                    <div class="HeaderCuadriculaMotivoInternoVincular"><h4>EXPEDIENTE ELECTRÓNICO SECUNDARIO</h4><h4>IDENTIDAD</h4> </div>
+                    <div class="OutputCuadriculaMotivoInternoVincular">
+
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botones de accion con ese nuevo proceso -->
+            <div class="container_btn_Proceso_Vincular" id="">
+                <button class="Cancelar_Proceso_Vincular btn btn-danger" id="">X Cancelar </button>
+                <button class="Procesar_Proceso_Vincular btn btn-primary"id=""> Procesar </button>
+                <button class="Guardar_Proceso_Vincular btn btn-success" id="">  Guardar </button>
+            </div>
+        </div>
+        <br><br>
+        <br><br><br><br>
+    </div>
+    <script src="/Alta.js"></script>
+    <script src="./js/Alta.js" type="module"></script>
+    <script src="./js/btwSwitchFirma.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</body>
+
+</html>
