@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
 });
 
 
-let btnGuardar = document.getElementById("btnGuardar");
+let btnGuardar = document.getElementById("btnGuardarFirma");
 btnGuardar.addEventListener("click", ()=>{
     let inputs = getDatosFromAlta();
     if(validarAltaFirma(inputs))
@@ -69,5 +69,11 @@ function getDatosFromAlta(){
 //meter un storage
 
 
+//BTN cancelar
 
 
+
+//     title: 'La acción seleccionada elimina los valores ingresados',
+//     text: 'Desea continuar con la cancelacion del alta de proceso masivos?.',
+//     buttons: true,
+//     dangerMode: true,  

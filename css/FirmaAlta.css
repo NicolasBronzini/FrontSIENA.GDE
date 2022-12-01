@@ -196,7 +196,7 @@
     right: unset;
     left: 0;
     content: "No";
-    transition-duration: 5000ms;
+    transition-duration: 5000s;
 }
 
 /* -------------------------Swich UnicoItem-------------------------------------- */

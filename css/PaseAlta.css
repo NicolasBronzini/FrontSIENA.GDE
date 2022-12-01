@@ -150,6 +150,7 @@
    outline: none;
   
 }
+
 .Swich_Asociacion::after{
    padding-top: 20px;
    content: "Si";
@@ -158,9 +159,7 @@
    height: 60px;
    position: absolute;
    background: #f1f1f1;
-   top: 0;
-   right: 0;
-   left: unset;
+  
    border-radius: 3px;
    border: 1px solid rgba(150, 150, 150, 0.442);
 }
@@ -185,63 +184,106 @@
    content: "No";
 }
 
-/* -------------------------Swich UnicoItem-------------------------------------- */
-.btn_Unico_Item{
-   display: none
-}
-.btn_Unico_Item.active{
-   display:block ;
-}
-.Swich_Item_Unico{
-   background: rgba(17, 123, 245, 1.0);
-   background: -webkit-linear-gradient(bottom, rgba(17, 123, 245, 1.0), rgba(100, 159, 205, 1.0));
-   background: -moz-linear-gradient(bottom, rgba(17, 123, 245, 1.0), rgba(100, 159, 205, 1.0));
-   background: linear-gradient(to top, rgba(17, 123, 245, 1.0), rgba(100, 159, 205, 1.0));;
-   border: none;
-   border-radius: 5px;
-   position: relative;
-   cursor: pointer;
-   display: flex;
-   outline: none;
-   
-  
-}
-.Swich_Item_Unico::after{
-   padding-top: 20px;
-   content: "Si";
-   display: block;
-   width: 100px;
-   height: 60px;
-   position: absolute;
-   background: #f1f1f1;
+
+
+
+
+
+
+
+/* Movimiento active no */
+/* Destino Unico  */
+#switchDestinoUnicoPase::after{
    top: 0;
-   right: 0;
-   left: unset;
-   border-radius: 3px;
-   border: 1px solid rgba(150, 150, 150, 0.442);
+  right: 0;
+  left: unset;
 }
-.Swich_Item_Unico span{
-   width: 100px;
-   height: 40px;
-   margin-top:20px ;
-   display: block;
-   background: none;
-   color: black;
-}
-.Swich_Item_Unico.active{
-   background: rgba(17, 123, 245, 1.0);
-   background: -webkit-linear-gradient(bottom, rgba(17, 123, 245, 1.0), rgba(100, 159, 205, 1.0));
-   background: -moz-linear-gradient(bottom, rgba(17, 123, 245, 1.0), rgba(100, 159, 205, 1.0));
-   background: linear-gradient(to top, rgba(17, 123, 245, 1.0), rgba(100, 159, 205, 1.0));;
-   
-   color: black;
-}
-.Swich_Item_Unico.active::after{
+#switchDestinoUnicoPase.active::after{
    right: unset;
    left: 0;
    content: "No";
 }
-/* -----------------------------------Fin Switch------------------------------------------------------------ */
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------------- */
+/* Asocia Expediente Pase */
+#switchAsociaExpedientePase::after{
+   top: 0;
+  right: 0;
+  left: unset;
+}
+#switchAsociaExpedientePase.active::after{
+   right: unset;
+   left: 0;
+   content: "No";
+}
+
+
+
+
+
+
+
+
+
+/* -------------------------------------------------------------- */
+/* Asocia SIENA  pase */
+#switchAsociacionSIENA::after{
+   top: 0;
+  right: 0;
+  left: unset;
+}
+#switchAsociacionSIENA.active::after{
+   right: unset;
+   left: 0;
+   content: "No";
+}
+
+
+
+/* -------------------------------------------------------------- */
+/* Asocia Unico Item  pase */
+#switchAsociaUnicoEEPase::after{
+   top: 0;
+  right: 0;
+  left: unset;
+}
+#switchAsociaUnicoEEPase.active::after{
+   right: unset;
+   left: 0;
+   content: "No";
+}
+
+/* -------------------------------------------------------------- */
+/* Asocia Unico Item  pase */
+#switchAsociaUnicoEEPase2::after{
+   top: 0;
+  right: 0;
+  left: unset;
+}
+#switchAsociaUnicoEEPase2.active::after{
+   right: unset;
+   left: 0;
+   content: "No";
+}
+
+
+
+
+
+
+/* Fin SWITCH */
+
+/* ----------------------------------------------------------------------------- */
+
 
 /* cuadricula De Documento electronico */
 .container_cuadricula_Datos_Pase{

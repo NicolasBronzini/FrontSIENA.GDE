@@ -43,19 +43,35 @@ let ContainerVinculacion = document.querySelector(".Alta_Expedientes_Vincular_Co
         if(Altas === AltasOptions[0]){
                 ContainerPase.classList.toggle("ContainerPaseActive");
                 console.log("Esto es pase");
-               
+
+                ContainerFirma.classList.remove("ContainerFirmaActive");
+                ContainerCaratulacion.classList.remove("ContainerCaratulacionActive");
+                ContainerVinculacion.classList.remove("ContainerVincularActive");
         }
         else if(Altas === AltasOptions[1]){
                 ContainerFirma.classList.toggle("ContainerFirmaActive");
                 console.log("Esto Firma");
+
+                ContainerPase.classList.remove("ContainerPaseActive");
+                ContainerCaratulacion.classList.remove("ContainerCaratulacionActive");
+                ContainerVinculacion.classList.remove("ContainerVincularActive");
+
         }
         else if(Altas === AltasOptions[2]){
                 ContainerCaratulacion.classList.toggle("ContainerCaratulacionActive");
                 console.log("Esto Caratulacion");
+
+                ContainerPase.classList.remove("ContainerPaseActive");
+                ContainerFirma.classList.remove("ContainerFirmaActive");
+                ContainerVinculacion.classList.remove("ContainerVincularActive");
         }
         else if(Altas === AltasOptions[3]){
                 ContainerVinculacion.classList.toggle("ContainerVincularActive");
                 console.log("Esto vinculacion");
+
+                ContainerFirma.classList.remove("ContainerFirmaActive");
+                ContainerCaratulacion.classList.remove("ContainerCaratulacionActive");
+                ContainerPase.classList.remove("ContainerPaseActive");
         }else{
                 
         }
@@ -66,4 +82,4 @@ let ContainerVinculacion = document.querySelector(".Alta_Expedientes_Vincular_Co
         });
 });
 
-
+ 

@@ -1,11 +1,12 @@
 class Firma {
-    constructor(id, referencia, firmante, tipoDocumento, path, permiteAsociacion) {
+    constructor(id, referencia, firmante, tipoDocumento, path, permiteAsociacion , ) {
         this.id = id;
         this.referencia = referencia;
         this.firmante = firmante;
         this.tipoDocumento = tipoDocumento;
         this.path = path;
         this.permiteAsociacion = permiteAsociacion;
+        
     }
 }
 
