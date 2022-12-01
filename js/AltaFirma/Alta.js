@@ -73,7 +73,3 @@ function getDatosFromAlta(){
 
 
 
-//     title: 'La acción seleccionada elimina los valores ingresados',
-//     text: 'Desea continuar con la cancelacion del alta de proceso masivos?.',
-//     buttons: true,
-//     dangerMode: true,  
