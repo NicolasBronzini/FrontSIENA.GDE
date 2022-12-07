@@ -52,12 +52,13 @@ function chequearPrimeraVez(){
 //Me quedo con los datos del form de alta
 function getDatosFromAlta(){
     let arrValido = [];
-    
+    let NombreDelDocumento = document.getElementById("cbxProceso").value
     let referencia = document.getElementById("referencia_alta_proceso_masivo_firma").value;
     let firmante = document.getElementById("firmante_alta_proceso_masivo_firma").value;
     let tipoDeDocumento = document.getElementById("tipoDeDocumento_alta_proceso_masivo_firma").value;
     let path ="./archivo.txt";
-    
+
+    arrValido.push(NombreDelDocumento);
     arrValido.push(referencia);
     arrValido.push(firmante);
     arrValido.push(tipoDeDocumento);
@@ -66,10 +67,34 @@ function getDatosFromAlta(){
     return arrValido;
 }
 
+//Valor Btn de AltaCompleja
+
 //meter un storage
 
 
-//BTN cancelar
+// Btn cancelar 
 
+let BtnCancelarFirmaAlta = document.getElementById("btnCancelarFirma")
 
+BtnCancelarFirmaAlta.addEventListener("click", ()=>{
 
+    //Delete item
+    function removeItem(lista) {
+        if (lista.target.classList.contains("btnCancelarFirma")) {
+          if (confirm("Estas Seguro que deseas borrar los datos cargados?")) {
+            let li = lista.target.parentElement;
+            let index = Array.prototype.indexOf.call(itemList.children, li);
+            removeLocalStorage(index);
+            itemList.removeChild(li);
+          }
+        }
+      }
+      
+      function removeLocalStorage(index){
+        let store = JSON.parse(localStorage.getItem("lista_altas_firma")) || [];
+        store.splice(index, 1);
+        localStorage.setItem('lista_altas_firma', JSON.stringify(store));
+      }
+      
+      
+})
